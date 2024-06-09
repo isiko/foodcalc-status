@@ -7,9 +7,12 @@
     let status = { }
 </script>
 
-{#if isAdmin} ADMIN MODE {/if}
+{#if isAdmin} 
+  <h1>ADMIN MODE</h1>
+  <p> Falls du hier ausversehen 
+{/if}
 
-{#await fetch('http://10.1.1.4:8090').then((x) => x.json())}
+{#await fetch('http://192.168.4.42:8090').then((x) => x.json())}
   Loading...
   (If you see this for more than a second, there is probably something wrong :0)
 {:then meals}

@@ -6,7 +6,7 @@
   let isAdmin =  adminPassword == "TEST";
 
   function updateMeal() {
-    fetch(`http://10.1.1.4:8090/${meal.meal_id}`, {
+    fetch(`http://192.168.4.42:8090/${meal.meal_id}`, {
     		method: 'POST',
         headers: {
           "Content-Type": "application/json",
@@ -15,16 +15,17 @@
     	})
   }
 </script>
-<div class="bg-blue-300 m-5 p-1">
-  <p> Meal: {meal.status.recipe} ({meal.meal_id}) </p>
+<div class="bg-unifest-green m-5 p-3 rounded-md">
+  <p> "{meal.status.recipe}" ({meal.meal_id}) </p>
   {#if !isAdmin}
     <p> Status: 
       {#if meal.status.eta == 0} 
-        Serving 
+        ✅ Serving 
       {:else if meal.status.eta > 0} 
-        More is on the way, ETA: +{meal.status.eta}min 
+        <p>⚠️ More is on the way, comming in {meal.status.eta}min </p>
+        <p> ETA: {new Date(meal.status.last_modified + meal.status.eta * 60).toISOString()} </p>
       {:else if meal.status.eta < 0} 
-        Sorry, this meal has finished serving :/
+        ❌ Sorry, this meal has finished serving :/
       {/if}
     </p>
   {:else}
