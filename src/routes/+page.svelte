@@ -12,7 +12,7 @@
   <p> Falls du hier ausversehen 
 {/if}
 
-{#await fetch('http://192.168.4.42:8090').then((x) => x.json())}
+{#await fetch('https://essen.campus-kit.de/api/').then((x) => x.json())}
   Loading...
   (If you see this for more than a second, there is probably something wrong :0)
 {:then meals}

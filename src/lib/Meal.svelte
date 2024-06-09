@@ -6,7 +6,7 @@
   let isAdmin =  adminPassword == "TEST";
 
   function updateMeal() {
-    fetch(`http://192.168.4.42:8090/${meal.meal_id}`, {
+    fetch(`https://essen.campus-kit.de/api/${meal.meal_id}`, {
     		method: 'POST',
         headers: {
           "Content-Type": "application/json",
